@@ -40,8 +40,8 @@ linesY = cat(3, [-180:10:180; -180:10:180], repmat([-90; 90], [1 37]), ones(2,37
 
 surf(azi, elev, F), view(2), colorbar, axis([-180 180 -90 90])
 shading interp
-line([linesX(:,:,1) linesY(:,:,1)], [linesX(:,:,2) linesY(:,:,2)], 1.5*max(F(:))*[linesX(:,:,3) linesY(:,:,3)], 'color',[100,100,100]/255)
+line([linesX(:,:,1) linesY(:,:,1)], [linesX(:,:,2) linesY(:,:,2)], 1.0*max(abs(F(:))) + [linesX(:,:,3) linesY(:,:,3)], 'color',[100,100,100]/255)
 
 if LS_PLOT
-    hold on, plot3(ls_dirs(:,1), ls_dirs(:,2), 2*max(F(:))*ones(length(ls_dirs),1), 'ro', 'MarkerFaceColor','r')
+    hold on, plot3(ls_dirs(:,1), ls_dirs(:,2), 1.05*max(abs(F(:))) + ones(length(ls_dirs),1), 'ro', 'MarkerFaceColor','r')
 end
